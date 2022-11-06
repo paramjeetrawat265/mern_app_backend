@@ -8,7 +8,12 @@ require("dotenv").config();
 const cors=require("cors");
 const PORT = process.env.PORT;
 app.use(express.json());
-app.use(cors())
+
+const corsOptions = { 
+    origin: 'https://mern-backend-s3rq.onrender.com', 
+    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204 
+}; 
+app.use(cors(corsOptions));
 
 app.get("/", (req, res) => {
     res.send("Homepage")
